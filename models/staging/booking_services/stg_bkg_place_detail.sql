@@ -16,7 +16,7 @@ with
                 DATETIME_UPDATED,
                 ENVIRONMENT
 
-        from    SANDPIT_SABBOTT.LANDING.LDG_BKG_PLACE_DETAIL
+        from    LANDING.LDG_BKG_PLACE_DETAIL
     )
 
 select * from place_detail
