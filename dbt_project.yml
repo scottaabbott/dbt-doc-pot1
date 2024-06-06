@@ -37,10 +37,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   booking_services:
+    staging:
+      schema: staging
+      +materialized: table
     marts:
-      core:
-        +schema: product
-        +materialized: table
-      staging:
-        +schema: staging
-        +materialized: table
+      schema: product
+      +materialized: table
+
