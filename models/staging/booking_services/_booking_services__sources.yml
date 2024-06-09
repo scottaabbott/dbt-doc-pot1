@@ -8,10 +8,32 @@ sources:
 
     tables:
 
+      #=============================
       - name: LDG_BKG_PLACE_DETAIL
+      #=============================
 
         columns:
           - name: PLACE_ID
+            tests:
+              - unique
+              - not_null
+
+      #================================
+      - name: LDG_BKG_FACILITY_DETAIL
+      #================================
+
+        columns:
+          - name: FACILITY_ID
+            tests:
+              - unique
+              - not_null
+
+      #============================
+      - name: LDG_BKG_UNIT_DETAIL
+      #============================
+
+        columns:
+          - name: UNIT_ID
             tests:
               - unique
               - not_null
