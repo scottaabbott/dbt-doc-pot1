@@ -16,7 +16,7 @@ with
                 DATETIME_UPDATED,
                 ENVIRONMENT
 
-        from    LANDING.LDG_BKG_PLACE_DETAIL
+        from    {{ source ('booking_services', 'LDG_BKG_PLACE_DETAIL') }}
     )
 
 select * from place_detail

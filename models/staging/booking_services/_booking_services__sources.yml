@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: booking_services
+    description: Existing Booking Services content in Production
+    database: sandpit_sabbott
+    schema: landing
+
+    tables:
+
+      - name: LDG_BKG_PLACE_DETAIL
+
+        columns:
+          - name: PLACE_ID
+            tests:
+              - unique
+              - not_null
+                                
