@@ -1,4 +1,4 @@
-version: 2
+-version: 2
 
 sources:
   - name: booking_services
@@ -37,4 +37,43 @@ sources:
             tests:
               - unique
               - not_null
+
+      #================================
+      - name: LDG_BKG_CUSTOMER_DETAIL
+      #================================
+
+        tests:
+
+          # test multi-col PK
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - customer_id
+                - last_modify_date
                                 
+      #================================
+      - name: LDG_BKG_PASS_DETAIL
+      #================================
+   
+        tests:
+
+          # test multi-col PK
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - pass_id
+                - datetime_updated
+
+      #==============================
+      - name: LDG_BKG_UNIT_PRICING
+      #==============================
+
+        tests:
+
+          # test multi-col PK
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - unit_type
+                - facility_id
+                - unit_price_type
+                - pricing_unit
+                - datetime_updated
+      
