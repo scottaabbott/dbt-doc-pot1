@@ -92,5 +92,29 @@ sources:
                 - age_classification
                 - datetime_updated
 
+      - name: LDG_BKG_CAPACITY_NIGHTLY
 
+        tests:
+        #   # test multi-col PK
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - inventory_date
+                - facility_id
+                - unit_type
 
+      - name: LDG_BKG_RESERVATION_REVENUE
+
+        # columns:
+        #   - name: RESERVATION_ID
+        #     tests:
+        #       - unique
+        #       - not_null
+
+        tests:
+        #   # test multi-col PK
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - reservation_id
+                - datetime_updated
+
+      
