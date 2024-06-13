@@ -10,7 +10,12 @@ sources:
       - name: place_detail
 
         columns:
-          - name: PLACE_ID
+          - name: place_id
+            tests:
+              - unique
+              - not_null
+
+          - name: datetime_updated
             tests:
               - unique
               - not_null
@@ -18,7 +23,12 @@ sources:
       - name: facility_detail
 
         columns:
-          - name: FACILITY_ID
+          - name: facility_id
+            tests:
+              - unique
+              - not_null
+
+          - name: datetime_updated
             tests:
               - unique
               - not_null
@@ -26,12 +36,23 @@ sources:
       - name: unit_detail
 
         columns:
-          - name: UNIT_ID
+          - name: unit_id
+            tests:
+              - unique
+              - not_null
+
+          - name: datetime_updated
             tests:
               - unique
               - not_null
 
       - name: customer_detail
+
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
 
         tests:
           # test multi-col PK
@@ -48,6 +69,12 @@ sources:
 
       - name: pass_detail
 
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
         tests:
           # test multi-col PK
           - dbt_utils.unique_combination_of_columns:
@@ -56,6 +83,12 @@ sources:
                 - datetime_updated
 
       - name: unit_pricing
+
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
 
         tests:
           # test multi-col PK
@@ -69,6 +102,12 @@ sources:
 
       - name: reservation_summary
 
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
         # tests:
         #   # test multi-col PK
         #   - dbt_utils.unique_combination_of_columns:
@@ -79,6 +118,12 @@ sources:
         #         - unit_id
 
       - name: reservation_nightly
+
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
 
         tests:
           #   # test multi-col PK
@@ -92,6 +137,12 @@ sources:
 
       - name: capacity_nightly
 
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
         tests:
           #   # test multi-col PK
           - dbt_utils.unique_combination_of_columns:
@@ -101,6 +152,12 @@ sources:
                 - unit_type
 
       - name: reservation_revenue
+
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
 
         # columns:
         #   - name: RESERVATION_ID
