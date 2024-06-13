@@ -1,12 +1,10 @@
-with 
+with
 
-    source as 
-    (
+    source as (
         select * from {{ source('booking_services', 'LDG_BKG_RESERVATION_NIGHTLY') }}
     ),
 
-    renamed as 
-    (
+    renamed as (
         select
             inventory_date,
             unit_id,

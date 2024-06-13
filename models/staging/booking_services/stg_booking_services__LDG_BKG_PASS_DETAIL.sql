@@ -1,32 +1,32 @@
-with 
+with
 
-source as (
+    source as (
 
-    select * from {{ source('booking_services', 'LDG_BKG_PASS_DETAIL') }}
+        select * from {{ source('booking_services', 'LDG_BKG_PASS_DETAIL') }}
 
-),
+    ),
 
-renamed as (
+    renamed as (
 
-    select
-        customer_id,
-        pass_id,
-        pass_type,
-        age_classification,
-        person_count,
-        classification,
-        start_date,
-        end_date,
-        status,
-        pass_purchase_date,
-        pass_creation_source,
-        revenue,
-        last_modify_date,
-        environment,
-        datetime_updated
+        select
+            customer_id,
+            pass_id,
+            pass_type,
+            age_classification,
+            person_count,
+            classification,
+            start_date,
+            end_date,
+            status,
+            pass_purchase_date,
+            pass_creation_source,
+            revenue,
+            last_modify_date,
+            environment,
+            datetime_updated
 
-    from source
+        from source
 
-)
+    )
 
 select * from renamed

@@ -1,12 +1,10 @@
-with 
+with
 
-    source as 
-    (
+    source as (
         select * from {{ source('booking_services', 'LDG_BKG_RESERVATION_REVENUE') }}
     ),
 
-    renamed as 
-    (
+    renamed as (
 
         select
             reservation_id,
