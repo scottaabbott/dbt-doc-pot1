@@ -25,11 +25,11 @@ with
             dob,
             classification_expiry_date,
             organization,
-            user_type,
+            user_type as user_type_id,
             last_modify_date,
             environment,
-            customer_classification,
-            datetime_updated
+            customer_classification as customer_classification_id,
+            datetime_updated as updated_at
 
         from source
 
