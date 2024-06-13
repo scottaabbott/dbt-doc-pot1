@@ -43,4 +43,8 @@ models:
     marts:
       schema: product
       +materialized: table
+      presentation:
+        schema: presentation
+        +materialized: view
+
 

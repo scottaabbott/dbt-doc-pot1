@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  #==========================
+  - name: v_summer_weekends
+  #==========================
+
+    description: example product view (US summmer weekends)
