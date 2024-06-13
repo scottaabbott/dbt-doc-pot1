@@ -132,17 +132,15 @@ with
     dates as (
         select
             spine_date,
-            date_part('year', spine_date)  as spine_year,
-            date_part('month', spine_date) as spine_month,
+            date_part('year', spine_date)  as year,
+            date_part('month', spine_date) as month,
             date_part('dow', spine_date)   as day_of_week,
             date_part('day', spine_date)   as day_of_month,
-            date_part('woy', spine_date)   as week_of_spine_year,
-
-            day_of_week in (0, 6)                as is_weekend,
-            not is_weekend                       as is_weekday,
-
-            round(ceil(spine_month / 3.0), 0)    as quarter_of_year,
-            round(ceil(spine_month / 6.0), 0)    as half_of_year
+            date_part('woy', spine_date)   as week_of_date_year,
+            day_of_week in (0, 6)          as is_weekend,
+            not is_weekend                 as is_weekday,
+            round(ceil(month / 3.0), 0)    as quarter_of_year,
+            round(ceil(month / 6.0), 0)    as half_of_year
 
         from spine
     )
@@ -157,7 +155,7 @@ select
     months.name                       as month_name,
     months.short_name                 as month_short_name,
 
-    'Y' || dates.spine_year           as year_text,
+    'Y' || dates.year                 as year_text,
     'Q' || dates.quarter_of_year      as quarter_of_year_text,
     'H' || dates.half_of_year         as half_of_year_text,
 
@@ -168,4 +166,4 @@ from dates
     inner join days
         on dates.day_of_week = days.number
     inner join months
-        on dates.spine_month = months.number
+        on dates.month = months.number
