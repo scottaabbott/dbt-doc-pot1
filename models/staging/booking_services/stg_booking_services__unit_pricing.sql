@@ -1,10 +1,13 @@
 with
 
     source as (
-        select * from {{ source('booking_services', 'LDG_BKG_UNIT_PRICING') }}
+
+        select * from {{ source('booking_services', 'unit_pricing') }}
+
     ),
 
     renamed as (
+
         select
             environment,
             unit_type,
@@ -29,6 +32,7 @@ with
             datetime_updated
 
         from source
+
     )
 
 select * from renamed

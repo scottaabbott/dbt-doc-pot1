@@ -1,12 +1,13 @@
-with 
+with
 
-    source as 
-    (
-        select * from {{ source('booking_services', 'LDG_BKG_CAPACITY_NIGHTLY') }}
+    source as (
+
+        select * from {{ source('booking_services', 'capacity_nightly') }}
+
     ),
 
-    renamed as 
-    (
+    renamed as (
+
         select
             inventory_date,
             facility_id,
@@ -20,6 +21,7 @@ with
             datetime_updated
 
         from source
+
     )
 
 select * from renamed

@@ -2,7 +2,7 @@ with
 
     source as (
 
-        select * from {{ source('booking_services', 'LDG_BKG_FACILITY_DETAIL') }}
+        select * from {{ source('booking_services', 'facility_detail') }}
 
     ),
 

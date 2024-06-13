@@ -1,7 +1,9 @@
 with
 
     source as (
-        select * from {{ source('booking_services', 'LDG_BKG_RESERVATION_REVENUE') }}
+
+        select * from {{ source('booking_services', 'reservation_revenue') }}
+
     ),
 
     renamed as (

@@ -1,16 +1,16 @@
 ---------------------------------
--- spine_date spine  - linkedin
+-- date spine  - linkedin
 ---------------------------------
 
 with
     spine as (
-        select '2000-01-01'::date as spine_date
+        select '2000-01-01'::date as date
 
         union all
 
-        select dateadd('day', 1, spine_date) as spine_date
+        select dateadd('day', 1, date) as date
         from spine
-        where spine_date < '2050-12-31'
+        where date < '2050-12-31'
     ),
 
     days (
@@ -131,16 +131,16 @@ with
 
     dates as (
         select
-            spine_date,
-            date_part('year', spine_date)  as year,
-            date_part('month', spine_date) as month,
-            date_part('dow', spine_date)   as day_of_week,
-            date_part('day', spine_date)   as day_of_month,
-            date_part('woy', spine_date)   as week_of_date_year,
-            day_of_week in (0, 6)          as is_weekend,
-            not is_weekend                 as is_weekday,
-            round(ceil(month / 3.0), 0)    as quarter_of_year,
-            round(ceil(month / 6.0), 0)    as half_of_year
+            date,
+            date_part('year', date)     as year,
+            date_part('month', date)    as month,
+            date_part('dow', date)      as day_of_week,
+            date_part('day', date)      as day_of_month,
+            date_part('woy', date)      as week_of_date_year,
+            day_of_week in (0, 6)       as is_weekend,
+            not is_weekend              as is_weekday,
+            round(ceil(month / 3.0), 0) as quarter_of_year,
+            round(ceil(month / 6.0), 0) as half_of_year
 
         from spine
     )

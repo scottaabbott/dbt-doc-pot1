@@ -4,11 +4,10 @@ sources:
   - name: booking_services
     description: Existing Booking Services content in Production
     database: sandpit_sabbott
-    schema: landing
+    schema: ldg_booking_services
 
     tables:
-
-      - name: LDG_BKG_PLACE_DETAIL
+      - name: place_detail
 
         columns:
           - name: PLACE_ID
@@ -16,16 +15,15 @@ sources:
               - unique
               - not_null
 
-      - name: LDG_BKG_FACILITY_DETAIL
+      - name: facility_detail
 
         columns:
-
-          - name: FACILITY_ID     
+          - name: FACILITY_ID
             tests:
               - unique
               - not_null
 
-      - name: LDG_BKG_UNIT_DETAIL
+      - name: unit_detail
 
         columns:
           - name: UNIT_ID
@@ -33,7 +31,7 @@ sources:
               - unique
               - not_null
 
-      - name: LDG_BKG_CUSTOMER_DETAIL
+      - name: customer_detail
 
         tests:
           # test multi-col PK
@@ -48,7 +46,7 @@ sources:
         #       - unique
         #       - not_null
 
-      - name: LDG_BKG_PASS_DETAIL
+      - name: pass_detail
 
         tests:
           # test multi-col PK
@@ -57,7 +55,7 @@ sources:
                 - pass_id
                 - datetime_updated
 
-      - name: LDG_BKG_UNIT_PRICING
+      - name: unit_pricing
 
         tests:
           # test multi-col PK
@@ -69,7 +67,7 @@ sources:
                 - pricing_unit
                 - datetime_updated
 
-      - name: LDG_BKG_RESERVATION_SUMMARY
+      - name: reservation_summary
 
         # tests:
         #   # test multi-col PK
@@ -80,10 +78,10 @@ sources:
         #         - facility_id
         #         - unit_id
 
-      - name: LDG_BKG_RESERVATION_NIGHTLY
-      
+      - name: reservation_nightly
+
         tests:
-        #   # test multi-col PK
+          #   # test multi-col PK
           - dbt_utils.unique_combination_of_columns:
               combination_of_columns:
                 - inventory_date
@@ -92,17 +90,17 @@ sources:
                 - age_classification
                 - datetime_updated
 
-      - name: LDG_BKG_CAPACITY_NIGHTLY
+      - name: capacity_nightly
 
         tests:
-        #   # test multi-col PK
+          #   # test multi-col PK
           - dbt_utils.unique_combination_of_columns:
               combination_of_columns:
                 - inventory_date
                 - facility_id
                 - unit_type
 
-      - name: LDG_BKG_RESERVATION_REVENUE
+      - name: reservation_revenue
 
         # columns:
         #   - name: RESERVATION_ID
@@ -111,10 +109,8 @@ sources:
         #       - not_null
 
         tests:
-        #   # test multi-col PK
+          #   # test multi-col PK
           - dbt_utils.unique_combination_of_columns:
               combination_of_columns:
                 - reservation_id
                 - datetime_updated
-
-      

@@ -1,10 +1,13 @@
 with
 
     source as (
-        select * from {{ source('booking_services', 'LDG_BKG_RESERVATION_NIGHTLY') }}
+
+        select * from {{ source('booking_services', 'reservation_nightly') }}
+
     ),
 
     renamed as (
+
         select
             inventory_date,
             unit_id,
@@ -20,6 +23,7 @@ with
             datetime_updated
 
         from source
+
     )
 
 select * from renamed

@@ -1,8 +1,9 @@
 version: 2
 
 models:
-  #==================
-  - name: dim_dates
-  #==================
+
+  - name: dim_dates_linkedIn
 
     description: common dates spine
+
+  - name: dim_dates_dbt_date

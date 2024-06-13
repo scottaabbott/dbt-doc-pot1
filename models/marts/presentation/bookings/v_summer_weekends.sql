@@ -1,7 +1,7 @@
 with 
     source as 
     (
-        select * from {{ ref('dim_dates') }}
+        select * from {{ ref('dim_dates_linkedIn') }}
     ),
 
     renamed as 

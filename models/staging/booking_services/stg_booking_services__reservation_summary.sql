@@ -1,7 +1,9 @@
 with
 
     source as (
-        select * from {{ source('booking_services', 'LDG_BKG_RESERVATION_SUMMARY') }}
+
+        select * from {{ source('booking_services', 'reservation_summary') }}
+
     ),
 
     renamed as (
@@ -34,16 +36,6 @@ with
             datetime_updated
 
         from source
-
-        -- remove completely duplicate rows
-
-        qualify ROW_NUMBER()
-            over
-            (
-                partition by reservation_id, customer_id, facility_id, unit_id
-                order by reservation_id, customer_id, facility_id, unit_id
-            )
-        = 1
 
     )
 
