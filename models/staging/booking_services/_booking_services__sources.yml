@@ -1,0 +1,173 @@
+-version: 2
+
+sources:
+  - name: booking_services
+    description: Existing Booking Services content in Production
+    database: sandpit_sabbott
+    schema: ldg_booking_services
+
+    tables:
+      - name: place_detail
+
+        columns:
+          - name: place_id
+            tests:
+              - unique
+              - not_null
+
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
+      - name: facility_detail
+
+        columns:
+          - name: facility_id
+            tests:
+              - unique
+              - not_null
+
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
+      - name: unit_detail
+
+        columns:
+          - name: unit_id
+            tests:
+              - unique
+              - not_null
+
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
+      - name: customer_detail
+
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
+        tests:
+          # test multi-col PK
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - customer_id
+                - last_modify_date
+
+        # columns:
+        #   - name: CUSTOMER_ID
+        #     tests:
+        #       - unique
+        #       - not_null
+
+      - name: pass_detail
+
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
+        tests:
+          # test multi-col PK
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - pass_id
+                - datetime_updated
+
+      - name: unit_pricing
+
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
+        tests:
+          # test multi-col PK
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - unit_type
+                - facility_id
+                - unit_price_type
+                - pricing_unit
+                - datetime_updated
+
+      - name: reservation_summary
+
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
+        # tests:
+        #   # test multi-col PK
+        #   - dbt_utils.unique_combination_of_columns:
+        #       combination_of_columns:
+        #         - reservation_id
+        #         - customer_id
+        #         - facility_id
+        #         - unit_id
+
+      - name: reservation_nightly
+
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
+        tests:
+          #   # test multi-col PK
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - inventory_date
+                - reservation_id
+                - unit_id
+                - age_classification
+                - datetime_updated
+
+      - name: capacity_nightly
+
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
+        tests:
+          #   # test multi-col PK
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - inventory_date
+                - facility_id
+                - unit_type
+
+      - name: reservation_revenue
+
+        columns:
+          - name: datetime_updated
+            tests:
+              - unique
+              - not_null
+
+        # columns:
+        #   - name: RESERVATION_ID
+        #     tests:
+        #       - unique
+        #       - not_null
+
+        tests:
+          #   # test multi-col PK
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - reservation_id
+                - datetime_updated
