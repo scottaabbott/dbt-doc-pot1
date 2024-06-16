@@ -11,14 +11,14 @@ with
         select
             inventory_date,
             facility_id,
-            facility_type,
+            facility_type    as facility_type_id,
             facility_name,
-            unit_type,
+            unit_type        as unit_type_id,
             total_available_capacity,
             total_capacity_reduction,
             occupied_units,
-            environment,
-            datetime_updated
+            environment      as environment_id,
+            datetime_updated as updated_at
 
         from source
 
